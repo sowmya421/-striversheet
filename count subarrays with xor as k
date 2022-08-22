@@ -1,0 +1,16 @@
+int Solution::solve(vector<int> &A, int B) {
+    map<int,int>m;
+    int cnt=0;
+    int xorr=0;
+    for(auto it: A){
+        xorr = xorr ^ it;
+        if(xorr==B){
+            cnt++;
+        }
+        if(m.find(xorr^B)!=m.end()){
+            cnt+=m[xorr^B];
+        }
+        m[xorr]++;
+    }
+    return cnt;
+}
